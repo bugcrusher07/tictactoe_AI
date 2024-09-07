@@ -22,16 +22,23 @@ def player_turn (list):
     return o
 
 def move(player,list):
-  input_line = int(input("enter the line"))
-  element_number = int(input("enter the element number"))
+  input_line = int(input("enter the line\n"))
+  element_number = int(input("enter the element number\n"))
   list[input_line][element_number]= player
 
+def who_won(list):
+  element = None
+  for index,value in list:
+    for sub_value in value:
+      if sub_value
 
 def main():
     while player_turn(modified_board_state) != None:
-      move(player_turn(modified_board_state),modified_board_state)
-      print(*modified_board_state,sep="\n")
-
+      if player_turn(modified_board_state) !=None:
+        move(player_turn(modified_board_state),modified_board_state)
+        print(*modified_board_state,sep="\n")
+      else:
+        print("Game Over")
 
 
 
