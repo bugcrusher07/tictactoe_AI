@@ -21,45 +21,63 @@ def player_turn (list):
   else:
     return o
 
-def move(player,list,winner):
+def move(player,list):
   input_line = int(input("enter the line\n"))
   element_number = int(input("enter the element number\n"))
   list[input_line][element_number]= player
-  winner = who_won(input_line,element_number,list)
+  who_won(input_line,element_number,list)
+
+
 
 def who_won(row,column,list):
   player = list[row][column]
   winner =  player
   row_winner = player
   column_winner = player
-  # if row and column != 1:
-  #   if row or column == 1:
-  #     for index,element in list:
-  #       if index != row:
-  #         continue
-  #       for subElement in element:
-  #         if subElement != player:
-  #           winner = None
-  if row and column !=1:
+  diagonal_winner = None
+
+  if row or column !=1:
     if row or column ==1:
       for i in range(0,3):
         if list[i][column] != player:
           row_winner = None
-        elif list[row][i]!= player:
+        if list[row][i]!= player:
           column_winner = None
-  if row_winner and column_winner == None:
+    else:
+      diagonal_winner = player
+      for i in range(0,3):
+        if list[i][column] != player:
+          row_winner = None
+        if list[row][i] !=player:
+          column_winner = None
+        if row and column ==0:
+          if list[row+i][column+i] != player:
+            diagonal_winner = None
+        if row and column ==2:
+          if list [row-i][column-i] !=player:
+            diagonal_winner = None
+        if row == 0 and column ==2:
+          if list[row+i][column-i] != player:
+            diagonal_winner = None
+        if row ==2 and column ==0:
+          if list[row-i][column+i] != player:
+            diagonal_winner=None
+  else:
+    print(f"the element is 1,1")
+
+
+  if row_winner and column_winner and diagonal_winner == None:
     winner = None
-  return winner
+  print(f"winner = {winner}")
 
 
 
 
 def main():
-    counter = 0
     winner = None
     turn = player_turn(modified_board_state)
     while turn != None:
-      move(turn,modified_board_state,winner)
+      move(turn,modified_board_state)
 
 
       print(*modified_board_state,sep="\n")
@@ -70,12 +88,6 @@ def main():
       if turn ==None:
         print("Game Over \n Nobody Won")
         break
-
-
-
-
-
-
 
 
 
