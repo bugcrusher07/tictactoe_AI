@@ -25,20 +25,41 @@ def move(player,list):
   input_line = int(input("enter the line\n"))
   element_number = int(input("enter the element number\n"))
   list[input_line][element_number]= player
+  who_won(input_line,element_number,list)
 
-def who_won(list):
-  element = None
-  for index,value in list:
-    for sub_value in value:
-      if sub_value
+def who_won(row,column,list):
+  player = list[row][column]
+  winner =  player
+  if row and column != 1:
+    if row or column == 1:
+      for index,element in list:
+        if index != row:
+          continue
+        for subElement in element:
+          if subElement != player:
+            winner = None
+
+
 
 def main():
-    while player_turn(modified_board_state) != None:
-      if player_turn(modified_board_state) !=None:
-        move(player_turn(modified_board_state),modified_board_state)
-        print(*modified_board_state,sep="\n")
+    counter = 0
+    winner = None
+    turn = player_turn(modified_board_state)
+    while turn != None:
+      move(turn,modified_board_state)
+      if counter <= 4:
+         counter +=1
       else:
-        print("Game Over")
+         winner = who_won(modified_board_state)
+
+      print(*modified_board_state,sep="\n")
+      if winner != None:
+         print(f"{winner} Won LOL")
+         break
+      turn = player_turn(modified_board_state)
+      if turn ==None:
+        print("Game Over \n Nobody Won")
+        break
 
 
 
