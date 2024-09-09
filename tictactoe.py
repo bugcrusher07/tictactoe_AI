@@ -24,8 +24,13 @@ def player_turn (list):
 def move(player,list):
   input_line = int(input("enter the line\n"))
   element_number = int(input("enter the element number\n"))
-  list[input_line][element_number]= player
-  who_won(input_line,element_number,list)
+  if list[input_line][element_number] ==None:
+    list[input_line][element_number]= player
+    who_won(input_line,element_number,list)
+  else:
+     print(f"enter the elements again")
+     move(player,list)
+
 
 
 
@@ -38,12 +43,14 @@ def who_won(row,column,list):
 
   if row!=1 or column !=1:
     if row==1 or column ==1:
+      print(f"for loop for mids")
       for i in range(0,3):
         if list[i][column] != player:
           row_winner = None
         if list[row][i]!= player:
           column_winner = None
     else:
+      print(f"for loop for corners")
       diagonal_winner = player
       for i in range(0,3):
         if list[i][column] != player:
@@ -62,11 +69,24 @@ def who_won(row,column,list):
           diagonal_winner = None
 
   else:
+    for i in range(0,3):
+        if list[i][column] != player:
+          row_winner = None
+        if list[row][i] !=player:
+          column_winner = None
+    diagonal = player
+    diagonal2 = player
+    if list[0][0] != player or list[2][2]!=player:
+          diagonal = None
+    if list[2][0] != player or list[0][2]!=player:
+          diagonal2 = None
+    if diagonal ==None and diagonal2 == None:
+          diagonal_winner= None
     print(f"the element is 1,1")
 
 
-  if row_winner and column_winner and diagonal_winner == None:
-    winner = None
+  if row_winner==None and column_winner== None and diagonal_winner == None :
+      winner = None
   print(f"winner = {winner}")
 
 
