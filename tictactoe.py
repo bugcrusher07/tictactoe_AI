@@ -26,7 +26,8 @@ def move(player,list):
   element_number = int(input("enter the element number\n"))
   if list[input_line][element_number] ==None:
     list[input_line][element_number]= player
-    who_won(input_line,element_number,list)
+    winner =who_won(input_line,element_number,list)
+    return winner
   else:
      print(f"enter the elements again")
      move(player,list)
@@ -88,6 +89,7 @@ def who_won(row,column,list):
   if row_winner==None and column_winner== None and diagonal_winner == None :
       winner = None
   print(f"winner = {winner}")
+  return winner
 
 
 
@@ -96,7 +98,7 @@ def main():
     winner = None
     turn = player_turn(modified_board_state)
     while turn != None:
-      move(turn,modified_board_state)
+      winner = move(turn,modified_board_state)
 
 
       print(*modified_board_state,sep="\n")
