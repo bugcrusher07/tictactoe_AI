@@ -36,8 +36,8 @@ def who_won(row,column,list):
   column_winner = player
   diagonal_winner = None
 
-  if row or column !=1:
-    if row or column ==1:
+  if row!=1 or column !=1:
+    if row==1 or column ==1:
       for i in range(0,3):
         if list[i][column] != player:
           row_winner = None
@@ -50,18 +50,17 @@ def who_won(row,column,list):
           row_winner = None
         if list[row][i] !=player:
           column_winner = None
-        if row and column ==0:
-          if list[row+i][column+i] != player:
-            diagonal_winner = None
-        if row and column ==2:
-          if list [row-i][column-i] !=player:
-            diagonal_winner = None
-        if row == 0 and column ==2:
-          if list[row+i][column-i] != player:
-            diagonal_winner = None
-        if row ==2 and column ==0:
-          if list[row-i][column+i] != player:
-            diagonal_winner=None
+        if row ==0:
+          tempRow = i
+        else:
+          tempRow = -i
+        if column == 0:
+          tempColumn = i
+        else:
+          tempColumn = -i
+        if list[row+tempRow][column+tempColumn] != player:
+          diagonal_winner = None
+
   else:
     print(f"the element is 1,1")
 
