@@ -75,6 +75,7 @@ def who_won(row,column,list):
           row_winner = None
         if list[row][i] !=player:
           column_winner = None
+    diagonal_winner = player
     diagonal = player
     diagonal2 = player
     if list[0][0] != player or list[2][2]!=player:
