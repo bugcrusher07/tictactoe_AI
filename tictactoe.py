@@ -1,3 +1,5 @@
+from util import Node,StackFrontier,QueueFrontier
+
 x = 1
 o = 0
 empty = None
@@ -21,6 +23,9 @@ def player_turn (list):
   else:
     return o
 
+# def ai(list,turn):
+
+
 def move(player,list):
   input_line = int(input("enter the line\n"))
   element_number = int(input("enter the element number\n"))
@@ -31,6 +36,14 @@ def move(player,list):
   else:
      print(f"enter the elements again")
      move(player,list)
+
+
+def neighbour_for_turn(list,turn):
+  for i in list:
+    for j in i:
+      if j == None:
+         list[i][j] = 101
+         Node()
 
 
 
