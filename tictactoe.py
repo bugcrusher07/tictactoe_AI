@@ -1,3 +1,5 @@
+
+
 from util import Node,StackFrontier,QueueFrontier
 
 x = 1
@@ -106,6 +108,29 @@ def who_won(row,column,list):
   return winner
 
 
+def ai(list,turn):
+   ele_for_ai = set()
+   bruh = []
+   for i in list:
+      for j in i:
+        if turn ==  i:
+          ele_for_ai.update((i,j))
+   return [ele_for_ai,turn,list]
+
+def ele_iter_ai(set):
+  tempList = set[0]
+  turn = set[1]
+  list = set[2]
+  for i in tempList:
+    method(list,i ,turn)
+
+
+def method(list ,i , turn):
+     if ( i ==  )
+
+    
+    
+
 
 
 def main():
@@ -128,6 +153,24 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
